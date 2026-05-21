@@ -1,0 +1,44 @@
+com.onmyoji.auto.app-savedstate-1.2.1-0 C:\Users\14791\.gradle\caches\transforms-3\0299077d3e18bb9b1d51300f42ef6426\transformed\savedstate-1.2.1\res
+com.onmyoji.auto.app-core-runtime-2.2.0-1 C:\Users\14791\.gradle\caches\transforms-3\03e4202569b1ae44414ae7de52471fc1\transformed\core-runtime-2.2.0\res
+com.onmyoji.auto.app-activity-compose-1.8.2-2 C:\Users\14791\.gradle\caches\transforms-3\0a185c72d62ccf4a1437292880384017\transformed\activity-compose-1.8.2\res
+com.onmyoji.auto.app-lifecycle-viewmodel-2.6.2-3 C:\Users\14791\.gradle\caches\transforms-3\0b667e1c687fe4a34068f0810726e693\transformed\lifecycle-viewmodel-2.6.2\res
+com.onmyoji.auto.app-lifecycle-viewmodel-ktx-2.6.2-4 C:\Users\14791\.gradle\caches\transforms-3\16590895d7390e45cae5986b5b49fee4\transformed\lifecycle-viewmodel-ktx-2.6.2\res
+com.onmyoji.auto.app-lifecycle-viewmodel-savedstate-2.6.2-5 C:\Users\14791\.gradle\caches\transforms-3\2274b4009a7ee03130465534e1a515eb\transformed\lifecycle-viewmodel-savedstate-2.6.2\res
+com.onmyoji.auto.app-lifecycle-runtime-2.6.2-6 C:\Users\14791\.gradle\caches\transforms-3\2997987fcded61b743ec0022c70da827\transformed\lifecycle-runtime-2.6.2\res
+com.onmyoji.auto.app-material-ripple-release-7 C:\Users\14791\.gradle\caches\transforms-3\2f5861f9655ea40d84f4cdb544ab99e9\transformed\material-ripple-release\res
+com.onmyoji.auto.app-foundation-release-8 C:\Users\14791\.gradle\caches\transforms-3\356b910c00cbfaba197f95c477cf1ad4\transformed\foundation-release\res
+com.onmyoji.auto.app-ui-text-release-9 C:\Users\14791\.gradle\caches\transforms-3\36678ecfc4b9982d169119ee40dba93b\transformed\ui-text-release\res
+com.onmyoji.auto.app-material-icons-extended-release-10 C:\Users\14791\.gradle\caches\transforms-3\4a29323dd1a8367db7fcf75a3b99748a\transformed\material-icons-extended-release\res
+com.onmyoji.auto.app-material-icons-core-release-11 C:\Users\14791\.gradle\caches\transforms-3\4d4f6be9f99721f7df0da0b25a1099eb\transformed\material-icons-core-release\res
+com.onmyoji.auto.app-customview-poolingcontainer-1.0.0-12 C:\Users\14791\.gradle\caches\transforms-3\50b2fe5fee03e534764db3066ed8f968\transformed\customview-poolingcontainer-1.0.0\res
+com.onmyoji.auto.app-runtime-release-13 C:\Users\14791\.gradle\caches\transforms-3\52a3ca8209425d1aefe5cc57eb0c3a49\transformed\runtime-release\res
+com.onmyoji.auto.app-startup-runtime-1.1.1-14 C:\Users\14791\.gradle\caches\transforms-3\59a4434d1e0e5c03ab932670cd474a10\transformed\startup-runtime-1.1.1\res
+com.onmyoji.auto.app-ui-graphics-release-15 C:\Users\14791\.gradle\caches\transforms-3\5ca34a7ad7dfe4ac28c9780ba4e29676\transformed\ui-graphics-release\res
+com.onmyoji.auto.app-activity-1.8.2-16 C:\Users\14791\.gradle\caches\transforms-3\5eca5c3a9ff1f0f7d58adb9460fdc508\transformed\activity-1.8.2\res
+com.onmyoji.auto.app-ui-unit-release-17 C:\Users\14791\.gradle\caches\transforms-3\6bfb1b83103bfbf437d59dcb2c08ac31\transformed\ui-unit-release\res
+com.onmyoji.auto.app-runtime-saveable-release-18 C:\Users\14791\.gradle\caches\transforms-3\766b9603e094ac22c2dc6304283a08a5\transformed\runtime-saveable-release\res
+com.onmyoji.auto.app-material3-1.1.2-19 C:\Users\14791\.gradle\caches\transforms-3\76d505d1d0b2c88a0f00493405f76f9f\transformed\material3-1.1.2\res
+com.onmyoji.auto.app-emoji2-1.4.0-20 C:\Users\14791\.gradle\caches\transforms-3\861246cb972eb8c7549339d9eb22f1c8\transformed\emoji2-1.4.0\res
+com.onmyoji.auto.app-savedstate-ktx-1.2.1-21 C:\Users\14791\.gradle\caches\transforms-3\8cff4e702ae00a9450e0bc8f0a3a33d9\transformed\savedstate-ktx-1.2.1\res
+com.onmyoji.auto.app-activity-ktx-1.8.2-22 C:\Users\14791\.gradle\caches\transforms-3\a2c9f54688d239f733626e0381011c7c\transformed\activity-ktx-1.8.2\res
+com.onmyoji.auto.app-ui-release-23 C:\Users\14791\.gradle\caches\transforms-3\a3112086be5157eca8d612bd1593e2aa\transformed\ui-release\res
+com.onmyoji.auto.app-ui-util-release-24 C:\Users\14791\.gradle\caches\transforms-3\a34a03a555e5cb13153b81ced06e18d0\transformed\ui-util-release\res
+com.onmyoji.auto.app-animation-release-25 C:\Users\14791\.gradle\caches\transforms-3\a6476b3cdfe3e8060c943f411e5b9431\transformed\animation-release\res
+com.onmyoji.auto.app-core-ktx-1.12.0-26 C:\Users\14791\.gradle\caches\transforms-3\ba2ba087a96411c428138f7fd4df14c0\transformed\core-ktx-1.12.0\res
+com.onmyoji.auto.app-animation-core-release-27 C:\Users\14791\.gradle\caches\transforms-3\ca8ad1b567dddc331cd26ead1ae53c57\transformed\animation-core-release\res
+com.onmyoji.auto.app-lifecycle-process-2.6.2-28 C:\Users\14791\.gradle\caches\transforms-3\d003b8dccd81001ad8612e4a42f5c96f\transformed\lifecycle-process-2.6.2\res
+com.onmyoji.auto.app-ui-tooling-preview-release-29 C:\Users\14791\.gradle\caches\transforms-3\df7511329148d9a33c859c38fa82a1cc\transformed\ui-tooling-preview-release\res
+com.onmyoji.auto.app-profileinstaller-1.3.0-30 C:\Users\14791\.gradle\caches\transforms-3\e0f963bc6b325dfac1e238a6eabaf5ec\transformed\profileinstaller-1.3.0\res
+com.onmyoji.auto.app-core-1.12.0-31 C:\Users\14791\.gradle\caches\transforms-3\e301ef7b03c70a30fa9dbfc1c07bd30d\transformed\core-1.12.0\res
+com.onmyoji.auto.app-foundation-layout-release-32 C:\Users\14791\.gradle\caches\transforms-3\e4d74f2a8de8e432eb69e85aef7a587f\transformed\foundation-layout-release\res
+com.onmyoji.auto.app-lifecycle-livedata-core-2.6.2-33 C:\Users\14791\.gradle\caches\transforms-3\e4d9496d8db71ed39953c95693e35d08\transformed\lifecycle-livedata-core-2.6.2\res
+com.onmyoji.auto.app-annotation-experimental-1.3.0-34 C:\Users\14791\.gradle\caches\transforms-3\ec0af8b4766bdd2915b00a5e1928a896\transformed\annotation-experimental-1.3.0\res
+com.onmyoji.auto.app-lifecycle-runtime-ktx-2.6.2-35 C:\Users\14791\.gradle\caches\transforms-3\f041c1d7d49f905e5e3a69bc0b40a74b\transformed\lifecycle-runtime-ktx-2.6.2\res
+com.onmyoji.auto.app-ui-geometry-release-36 C:\Users\14791\.gradle\caches\transforms-3\f363a4f11bb9b1a8092d0ccc5aaf956b\transformed\ui-geometry-release\res
+com.onmyoji.auto.app-pngs-37 D:\Program Files\GameViewer\Download\OnmyojiAutoAPK\OnmyojiAutoAPK\app\build\generated\res\pngs\debug
+com.onmyoji.auto.app-resValues-38 D:\Program Files\GameViewer\Download\OnmyojiAutoAPK\OnmyojiAutoAPK\app\build\generated\res\resValues\debug
+com.onmyoji.auto.app-packageDebugResources-39 D:\Program Files\GameViewer\Download\OnmyojiAutoAPK\OnmyojiAutoAPK\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.onmyoji.auto.app-packageDebugResources-40 D:\Program Files\GameViewer\Download\OnmyojiAutoAPK\OnmyojiAutoAPK\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.onmyoji.auto.app-merged_res-41 D:\Program Files\GameViewer\Download\OnmyojiAutoAPK\OnmyojiAutoAPK\app\build\intermediates\merged_res\debug
+com.onmyoji.auto.app-debug-42 D:\Program Files\GameViewer\Download\OnmyojiAutoAPK\OnmyojiAutoAPK\app\src\debug\res
+com.onmyoji.auto.app-main-43 D:\Program Files\GameViewer\Download\OnmyojiAutoAPK\OnmyojiAutoAPK\app\src\main\res

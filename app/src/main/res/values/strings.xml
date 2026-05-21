@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">阴阳师自动</string>
+    <string name="accessibility_desc">阴阳师自动化脚本需要无障碍权限来执行探索和突破任务</string>
+    <string name="channel_name">自动化服务</string>
+    <string name="notification_title">自动化运行中</string>
+    <string name="notification_text">正在执行任务…</string>
+</resources>
