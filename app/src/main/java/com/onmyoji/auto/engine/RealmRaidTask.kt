@@ -1,13 +1,12 @@
 package com.onmyoji.auto.engine
 import kotlinx.coroutines.delay
 import android.content.Context
-import com.onmyoji.auto.model.AttackFailStrategy
 import com.onmyoji.auto.model.TaskConfig
 
 /**
  * 个人突破任务 — 保留 OAS 核心逻辑
  *
- * 流程：导航 → 勋章选择 → 挑战 → 刷新/重试 → 退出
+ * 流程：导航 → 勋章选择 → 挑战 → 继续/刷新 → 退出
  */
 class RealmRaidTask(
     context: Context,
@@ -134,17 +133,9 @@ class RealmRaidTask(
             // 寻找勋章
             val (medal, index) = findMedal(frame)
             if (medal == null) {
-                when (config.whenAttackFail) {
-                    AttackFailStrategy.CONTINUE -> {
-                        log("无可攻击目标，尝试刷新")
-                        if (checkRefresh()) continue
-                        success = false; break
-                    }
-                    else -> {
-                        log("无可攻击目标，退出")
-                        success = false; break
-                    }
-                }
+                log("无可攻击目标，尝试刷新")
+                if (checkRefresh()) continue
+                success = false; break
             }
 
             // 退四打九
@@ -164,16 +155,9 @@ class RealmRaidTask(
                 success = false; break
             }
 
-            // 失败处理
+            // 失败处理：继续
             if (!lastBattle) {
-                when (config.whenAttackFail) {
-                    AttackFailStrategy.REFRESH -> {
-                        if (checkRefresh()) continue
-                        success = false; break
-                    }
-                    AttackFailStrategy.EXIT -> { break }
-                    AttackFailStrategy.CONTINUE -> { /* 继续 */ }
-                }
+                log("战斗失败，继续")
             }
 
             currentCount++

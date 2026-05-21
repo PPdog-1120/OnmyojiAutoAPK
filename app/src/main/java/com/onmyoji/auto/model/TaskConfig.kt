@@ -17,11 +17,9 @@ data class TaskConfig(
     val exitFour: Boolean = true,
     val orderAttack: String = "5>4>3>2>1>0",
     val threeRefresh: Boolean = false,
-    val whenAttackFail: AttackFailStrategy = AttackFailStrategy.REFRESH,
 
     // 通用战斗
     val lockTeam: Boolean = false
 )
 
-enum class AttackFailStrategy { EXIT, CONTINUE, REFRESH }
 enum class TaskType { EXPLORATION, REALM_RAID }
