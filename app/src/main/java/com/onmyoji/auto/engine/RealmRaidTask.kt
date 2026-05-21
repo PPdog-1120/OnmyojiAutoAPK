@@ -6,7 +6,7 @@ import com.onmyoji.auto.model.TaskConfig
 /**
  * 个人突破任务 — 保留 OAS 核心逻辑
  *
- * 流程：导航 → 勋章选择 → 挑战 → 继续/刷新 → 退出
+ * 流程：导航 → 勋章选择 → 挑战 → 继续/刷新 → 退出 → 设置探索恢复
  */
 class RealmRaidTask(
     context: Context,
@@ -166,7 +166,12 @@ class RealmRaidTask(
         // 退出
         device.click(1178 + 57 / 2, 101 + 64 / 2)
         delay(1000)
-        log("=== 个人突破完成，成功=$success，次数=$currentCount ===")
+
+        // 设置探索下次运行：当前时间 + 2 分钟
+        val nextExplorationTime = System.currentTimeMillis() + 2 * 60 * 1000
+        setExplorationNextRun(nextExplorationTime)
+
+        log("=== 个人突破完成，成功=$success，次数=$currentCount，探索2分钟后恢复 ===")
     }
 
     /**
