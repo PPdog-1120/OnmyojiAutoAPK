@@ -239,22 +239,6 @@ fun ExplorationConfig(config: TaskConfig, onChange: (TaskConfig) -> Unit) {
             textStyle = androidx.compose.ui.text.TextStyle(color = Color.White)
         )
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            listOf("alone" to "单人", "leader" to "队长", "member" to "队员").forEach { (value, label) ->
-                FilterChip(
-                    selected = config.userStatus.name.lowercase() == value,
-                    onClick = {
-                        val status = when (value) {
-                            "leader" -> UserStatus.LEADER
-                            "member" -> UserStatus.MEMBER
-                            else -> UserStatus.ALONE
-                        }
-                        onChange(config.copy(userStatus = status))
-                    },
-                    label = { Text(label) }
-                )
-            }
-        }
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             OutlinedTextField(
                 value = config.minionsCount.toString(),
                 onValueChange = { onChange(config.copy(minionsCount = it.toIntOrNull() ?: 30)) },

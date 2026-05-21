@@ -5,12 +5,10 @@ package com.onmyoji.auto.model
  */
 data class TaskConfig(
     val explorationLevel: String = "第二十八章",
-    val userStatus: UserStatus = UserStatus.ALONE,
     val limitTimeMinutes: Int = 30,
     val minionsCount: Int = 30,
     val autoRotate: Boolean = false,
     val chooseRarity: String = "N卡",
-    val upType: UpType = UpType.ALL,
     val buffGold50: Boolean = false,
     val buffExp50: Boolean = false,
 
@@ -25,7 +23,5 @@ data class TaskConfig(
     val lockTeam: Boolean = false
 )
 
-enum class UserStatus { ALONE, LEADER, MEMBER }
-enum class UpType { ALL, EXP, COIN, DARUMA }
 enum class AttackFailStrategy { EXIT, CONTINUE, REFRESH }
 enum class TaskType { EXPLORATION, REALM_RAID }

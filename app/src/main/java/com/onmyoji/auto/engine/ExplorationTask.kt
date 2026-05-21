@@ -2,13 +2,11 @@ package com.onmyoji.auto.engine
 import kotlinx.coroutines.delay
 import android.content.Context
 import com.onmyoji.auto.model.TaskConfig
-import com.onmyoji.auto.model.UpType
-import com.onmyoji.auto.model.UserStatus
 
 /**
  * 探索任务 — 保留 OAS 核心逻辑
  *
- * 流程：场景识别 → 章节选择 → 战斗循环（UP怪优先/小怪/Boss） → 退出
+ * 流程：场景识别 → 章节选择 → 战斗循环（小怪/Boss） → 退出
  */
 class ExplorationTask(
     context: Context,
@@ -56,19 +54,6 @@ class ExplorationTask(
         "exploration/res_battle_reward.png",
         intArrayOf(647, 395, 31, 21), intArrayOf(1, 1, 1278, 718), 0.9f)
 
-    // UP怪标识
-    private val I_UP_EXP = RuleImage("up_exp",
-        "exploration/highlight_up_exp.png",
-        intArrayOf(471, 518, 74, 71), intArrayOf(1, 225, 1278, 410), 0.8f)
-
-    private val I_UP_COIN = RuleImage("up_coin",
-        "exploration/highlight_up_coin.png",
-        intArrayOf(330, 529, 74, 74), intArrayOf(1, 317, 1278, 316), 0.8f)
-
-    private val I_UP_DARUMA = RuleImage("up_daruma",
-        "exploration/highlight_up_daruma.png",
-        intArrayOf(1146, 510, 80, 80), intArrayOf(1, 265, 1278, 369), 0.8f)
-
     // 宝箱
     private val I_TREASURE_BOX = RuleImage("treasure_box",
         "exploration/res_treasure_box_click.png",
@@ -109,17 +94,12 @@ class ExplorationTask(
     override suspend fun run() {
         log("=== 探索任务开始 ===")
         log("章节: ${config.explorationLevel}")
-        log("模式: ${config.userStatus}")
 
         // 导航到探索页面
         navigateToExploration()
 
-        // 根据模式执行
-        when (config.userStatus) {
-            UserStatus.ALONE -> runSolo()
-            UserStatus.LEADER -> runLeader()
-            UserStatus.MEMBER -> runMember()
-        }
+        // 执行探索
+        runSolo()
 
         log("=== 探索完成，战斗 $minionsCnt 次 ===")
     }
@@ -168,7 +148,7 @@ class ExplorationTask(
                         }
                         continue
                     }
-                    // 小怪（UP优先）
+                    // 小怪
                     val fightBtn = findUpFight(img)
                     if (fightBtn != null) {
                         if (fire(fightBtn, img)) {
@@ -200,23 +180,6 @@ class ExplorationTask(
     }
 
     /**
-     * 队长模式
-     */
-    private suspend fun runLeader() {
-        log("队长模式启动")
-        // 类似 solo，但包含组队和邀请逻辑
-        runSolo() // 简化处理
-    }
-
-    /**
-     * 队员模式
-     */
-    private suspend fun runMember() {
-        log("队员模式启动")
-        // 队员只需要战斗，不需要导航
-    }
-
-    /**
      * 场景识别
      */
     private fun detectScene(img: android.graphics.Bitmap): Scene {
@@ -244,38 +207,10 @@ class ExplorationTask(
     }
 
     /**
-     * 寻找UP怪
+     * 寻找战斗目标
      */
     private fun findUpFight(img: android.graphics.Bitmap): RuleImage? {
-        val upRule = when (config.upType) {
-            UpType.EXP -> I_UP_EXP
-            UpType.COIN -> I_UP_COIN
-            UpType.DARUMA -> I_UP_DARUMA
-            UpType.ALL -> {
-                return if (I_NORMAL_BATTLE.match(img, context).matched) I_NORMAL_BATTLE else null
-            }
-        }
-
-        val upResult = upRule.match(img, context)
-        if (!upResult.matched) return null
-
-        // 在UP图标附近找战斗按钮
-        val roi = intArrayOf(
-            (upResult.x - 60).coerceAtLeast(0),
-            (upResult.y - 300).coerceAtLeast(0),
-            120,
-            280
-        )
-        val matches = I_NORMAL_BATTLE.matchAll(img, context, roi)
-        if (matches.isEmpty()) return null
-
-        // 按距离排序
-        val best = matches.minByOrNull {
-            val dx = (it.centerX - upResult.centerX) * 3
-            val dy = it.centerY - upResult.centerY
-            dx * dx + dy * dy
-        }
-        return if (best != null) I_NORMAL_BATTLE else null
+        return if (I_NORMAL_BATTLE.match(img, context).matched) I_NORMAL_BATTLE else null
     }
 
     /**
