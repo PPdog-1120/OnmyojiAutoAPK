@@ -1,4 +1,5 @@
 package com.onmyoji.auto.engine
+
 import kotlinx.coroutines.delay
 import android.content.Context
 import com.onmyoji.auto.model.TaskConfig

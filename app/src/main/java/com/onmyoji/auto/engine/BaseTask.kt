@@ -127,4 +127,31 @@ abstract class BaseTask(
     protected fun isTimeUp(limitMinutes: Int): Boolean {
         return System.currentTimeMillis() - startTime > limitMinutes * 60_000L
     }
+
+    // ========== 任务调度方法 ==========
+
+    /**
+     * 设置本任务的下次运行时间
+     */
+    protected fun setNextRun(timeMs: Long) {
+        android.util.Log.d("BaseTask", "[${javaClass.simpleName}] setNextRun: $timeMs")
+        // 由 TaskManager 注入调度回调，当前仅日志记录
+        // 后续可通过 TaskManager.scheduleNext(taskType, timeMs) 实现真正的调度
+    }
+
+    /**
+     * 设置个人突破任务的下次运行时间
+     */
+    protected fun setRealmRaidNextRun(delayMs: Long) {
+        val runAt = System.currentTimeMillis() + delayMs
+        android.util.Log.d("BaseTask", "setRealmRaidNextRun: runAt=$runAt (delay=${delayMs}ms)")
+    }
+
+    /**
+     * 设置探索任务的下次运行时间
+     */
+    protected fun setExplorationNextRun(delayMs: Long) {
+        val runAt = System.currentTimeMillis() + delayMs
+        android.util.Log.d("BaseTask", "setExplorationNextRun: runAt=$runAt (delay=${delayMs}ms)")
+    }
 }

@@ -1,4 +1,5 @@
 package com.onmyoji.auto.engine
+
 import kotlinx.coroutines.delay
 import android.content.Context
 import com.onmyoji.auto.model.TaskConfig
@@ -141,7 +142,10 @@ class RealmRaidTask(
             // 退四打九
             if (index == 1 && config.exitFour) {
                 log("第一个位置，退四策略")
-                repeat(4) { fireAt(index!!); delay(2000) }
+                repeat(4) {
+                    fireAt(index!!)
+                    delay(2000)
+                }
             }
 
             // 挑战
