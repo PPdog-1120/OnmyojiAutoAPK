@@ -10,6 +10,10 @@ data class TaskConfig(
     val autoRotate: Boolean = true,
     val chooseRarity: String = "N卡",
 
+    // 绘卷模式
+    val scrollsEnable: Boolean = true,
+    val scrollsThreshold: Int = 25,
+
     // 个人突破
     val numberAttack: Int = 30,
     val exitFour: Boolean = true,

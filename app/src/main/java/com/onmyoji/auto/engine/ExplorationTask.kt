@@ -6,7 +6,7 @@ import com.onmyoji.auto.model.TaskConfig
 /**
  * 探索任务 — 保留 OAS 核心逻辑
  *
- * 流程：场景识别 → 章节选择 → 战斗循环（小怪/Boss） → 退出
+ * 流程：场景识别 → 章节选择 → 战斗循环（小怪/Boss） → 绘卷检测 → 退出
  */
 class ExplorationTask(
     context: Context,
@@ -54,6 +54,10 @@ class ExplorationTask(
         "exploration/res_battle_reward.png",
         intArrayOf(647, 395, 31, 21), intArrayOf(1, 1, 1278, 718), 0.9f)
 
+    // 突破票数量 OCR 区域
+    private val O_REALM_RAID_NUMBER = OcrRegion("realm_raid_number",
+        intArrayOf(1050, 20, 60, 30), intArrayOf(1020, 5, 120, 60), "0123456789")
+
     // 宝箱
     private val I_TREASURE_BOX = RuleImage("treasure_box",
         "exploration/res_treasure_box_click.png",
@@ -91,9 +95,15 @@ class ExplorationTask(
     private var minionsCnt = 0
     private var searchFailCnt = 0
 
+    // 绘卷模式：是否已触发（防止重复触发）
+    private var scrollsTriggered = false
+
     override suspend fun run() {
         log("=== 探索任务开始 ===")
         log("章节: ${config.explorationLevel}")
+        if (config.scrollsEnable) {
+            log("绘卷模式: 开启，阈值=${config.scrollsThreshold}")
+        }
 
         // 导航到探索页面
         navigateToExploration()
@@ -106,16 +116,14 @@ class ExplorationTask(
 
     private suspend fun navigateToExploration() {
         log("导航到探索页面...")
-        // 实际实现需要 GameUi 页面导航
-        // 这里简化为直接点击探索入口
         waitUntilAppear(I_CHECK_EXPLORATION, 15000)
     }
 
     /**
-     * 单人模式
+     * 探索主循环
      */
     private suspend fun runSolo() {
-        log("单人模式启动")
+        log("探索启动")
         searchFailCnt = 0
 
         while (true) {
@@ -132,6 +140,8 @@ class ExplorationTask(
                         appearThenClick(I_TREASURE_BOX, img)
                     }
                     if (checkExit()) return
+                    // 绘卷检测
+                    if (checkScrolls(img)) return
                     // 选择章节
                     selectChapter()
                 }
@@ -170,13 +180,47 @@ class ExplorationTask(
                     }
                 }
                 Scene.BATTLE -> {
-                    // 等待战斗结束
                     log("等待战斗结束...")
                     delay(3000)
                 }
                 else -> delay(500)
             }
         }
+    }
+
+    /**
+     * 绘卷模式：检测突破票数量，达到阈值时暂停探索去打突破
+     */
+    private suspend fun checkScrolls(img: android.graphics.Bitmap): Boolean {
+        if (!config.scrollsEnable) return false
+        if (scrollsTriggered) return false
+
+        val raidCount = O_REALM_RAID_NUMBER.ocr(img, context)
+        val current = raidCount.toIntOrNull() ?: return false
+
+        if (current >= config.scrollsThreshold) {
+            log("绘卷模式触发：突破票=$current ≥ 阈值=${config.scrollsThreshold}")
+            scrollsTriggered = true
+
+            // 关闭可能存在的弹窗
+            appearThenClick(I_RED_CLOSE, img)
+            delay(500)
+
+            // 退出探索
+            quitExplore()
+            delay(1000)
+
+            // 设置探索下次运行：当前时间 + 2 分钟
+            val nextRunTime = System.currentTimeMillis() + 2 * 60 * 1000
+            setNextRun(nextRunTime)
+
+            // 设置个人突破立即运行
+            setRealmRaidNextRun(0)
+
+            log("绘卷模式：已设置突破立即运行，探索2分钟后恢复")
+            return true
+        }
+        return false
     }
 
     /**
@@ -201,8 +245,6 @@ class ExplorationTask(
      */
     private suspend fun selectChapter() {
         log("选择章节: ${config.explorationLevel}")
-        // OCR识别章节列表，滑动到目标章节
-        // 简化实现：直接点击探索按钮
         appearThenClick(I_EXPLORATION_CLICK, interval = 2000)
     }
 
