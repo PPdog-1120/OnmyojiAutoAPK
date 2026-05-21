@@ -7,10 +7,8 @@ data class TaskConfig(
     val explorationLevel: String = "第二十八章",
     val limitTimeMinutes: Int = 30,
     val minionsCount: Int = 30,
-    val autoRotate: Boolean = false,
+    val autoRotate: Boolean = true,
     val chooseRarity: String = "N卡",
-    val buffGold50: Boolean = false,
-    val buffExp50: Boolean = false,
 
     // 个人突破
     val numberAttack: Int = 30,
